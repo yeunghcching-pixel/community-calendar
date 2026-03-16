@@ -3,75 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社區客廳活動月曆</title>
+    <title>3月社區活動月曆</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
-        
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-        }
-
-        .calendar-day {
-            min-height: 100px;
-            transition: all 0.2s;
-        }
-
-        .calendar-day:hover {
-            background-color: #f1f5f9;
-        }
-
-        .event-tag {
-            font-size: 0.75rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            cursor: pointer;
-        }
-
-        /* 自定義滾動條 */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+        .calendar-day { min-height: 100px; transition: all 0.2s; }
+        .event-tag { font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
     </style>
 </head>
 <body class="p-4 md:p-8">
 
     <div class="max-w-5xl mx-auto">
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-            <div>
-                <h1 class="text-3xl font-bold text-slate-800">🏠 社區客廳活動月曆</h1>
-                <p class="text-slate-500 mt-1">歡迎街坊報名參加，一起建設溫暖社區！</p>
-            </div>
-            
-            <div class="flex items-center bg-white rounded-lg shadow-sm p-1 border">
-                <button id="prevBtn" class="p-2 hover:bg-slate-100 rounded-md transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-                </button>
-                <span id="currentMonthYear" class="px-4 font-bold text-lg min-w-[120px] text-center">2024年 3月</span>
-                <button id="nextBtn" class="p-2 hover:bg-slate-100 rounded-md transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
-            </div>
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-slate-800">🏠 3月社區客廳活動</h1>
+            <p class="text-slate-500 mt-1">點擊活動查看詳情並報名</p>
         </div>
 
-        <!-- Calendar Container -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-            <!-- Weekday Headers -->
             <div class="calendar-grid bg-slate-50 border-b border-slate-200">
                 <div class="py-3 text-center text-sm font-semibold text-red-500">日</div>
                 <div class="py-3 text-center text-sm font-semibold text-slate-600">一</div>
@@ -81,99 +31,65 @@
                 <div class="py-3 text-center text-sm font-semibold text-slate-600">五</div>
                 <div class="py-3 text-center text-sm font-semibold text-slate-400">六</div>
             </div>
-
-            <!-- Days Grid -->
-            <div id="calendarDays" class="calendar-grid">
-                <!-- Days will be injected by JS -->
-            </div>
+            <div id="calendarDays" class="calendar-grid"></div>
         </div>
     </div>
 
-    <!-- Modal (活動詳情) -->
+    <!-- Modal -->
     <div id="eventModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl transform transition-all">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl">
             <div class="flex justify-between items-start mb-4">
-                <h3 id="modalTitle" class="text-2xl font-bold text-slate-800">活動名稱</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                <h3 id="modalTitle" class="text-2xl font-bold text-slate-800"></h3>
+                <button onclick="closeModal()" class="text-slate-400 text-2xl">&times;</button>
             </div>
             <div class="space-y-3 text-slate-600">
-                <div class="flex items-center gap-2">
-                    <span class="bg-blue-100 text-blue-700 p-1 rounded text-sm">📅 日期</span>
-                    <span id="modalDate">2024年3月15日</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="bg-green-100 text-green-700 p-1 rounded text-sm">⏰ 時間</span>
-                    <span id="modalTime">14:00 - 16:00</span>
-                </div>
-                <div class="mt-4 p-4 bg-slate-50 rounded-lg">
-                    <p id="modalDesc">這裡是活動的詳細描述。我們會一起進行手工製作、聊天交流。</p>
-                </div>
+                <p>📅 <span id="modalDate"></span></p>
+                <p>⏰ <span id="modalTime"></span></p>
+                <div class="p-4 bg-slate-50 rounded-lg"><p id="modalDesc"></p></div>
             </div>
             <div class="mt-6 flex gap-3">
-                <button onclick="closeModal()" class="flex-1 px-4 py-2 border border-slate-200 rounded-xl hover:bg-slate-50 font-medium">關閉</button>
-                <a id="modalLink" href="#" target="_blank" class="flex-1 px-4 py-2 bg-blue-600 text-white text-center rounded-xl hover:bg-blue-700 font-medium shadow-md transition">立即報名</a>
+                <button onclick="closeModal()" class="flex-1 px-4 py-2 border rounded-xl">關閉</button>
+                <a id="modalLink" href="#" target="_blank" class="flex-1 px-4 py-2 bg-blue-600 text-white text-center rounded-xl font-medium">立即報名</a>
             </div>
         </div>
     </div>
 
     <script>
-        // 模擬活動數據 (你可以自行修改或擴展)
+        // 集中管理 3 月活動
         const events = [
             { date: '2026-03-05', title: '長者智能手機班', time: '10:00 - 12:00', desc: '教導街坊使用常用手機應用程式。', color: 'bg-blue-100 text-blue-800', link: 'https://forms.google.com/your-form-1' },
             { date: '2026-03-12', title: '手工皂工作坊', time: '14:30 - 16:30', desc: '一起製作天然手工皂，送禮自用兩相宜。', color: 'bg-purple-100 text-purple-800', link: 'https://forms.google.com/your-form-2' },
             { date: '2026-03-20', title: '社區共餐日', time: '18:00 - 20:00', desc: '每人帶一道菜，分享美味與故事。', color: 'bg-orange-100 text-orange-800', link: 'https://forms.google.com/your-form-3' },
-            { date: '2026-04-05', title: '兒童畫畫比賽', time: '11:00 - 13:00', desc: '主題：我眼中的社區。', color: 'bg-green-100 text-green-800', link: 'https://forms.google.com/your-form-4' },
-            { date: '2026-04-18', title: '義務理髮服務', time: '14:00 - 17:00', desc: '專業髮型師為街坊提供免費剪髮服務。', color: 'bg-red-100 text-red-800', link: 'https://forms.google.com/your-form-5' }
+            { date: '2026-03-26', title: '街坊法律諮詢', time: '19:00 - 21:00', desc: '義務律師解答法律疑問。', color: 'bg-red-100 text-red-800', link: 'https://forms.google.com/your-form-4' }
         ];
-
-        let currentViewDate = new Date(2026, 2, 1); // 預設顯示 2026年3月 (Month是從0開始)
 
         function renderCalendar() {
             const calendarDays = document.getElementById('calendarDays');
-            const monthYearLabel = document.getElementById('currentMonthYear');
+            const year = 2026;
+            const month = 2; // 3 月在 JS 中是 index 2
             
-            calendarDays.innerHTML = '';
-            
-            const year = currentViewDate.getFullYear();
-            const month = currentViewDate.getMonth();
-            
-            monthYearLabel.innerText = `${year}年 ${month + 1}月`;
-
-            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            // 填充上個月的空白
-            for (let i = 0; i < firstDayOfMonth; i++) {
-                const emptyDiv = document.createElement('div');
-                emptyDiv.className = 'calendar-day border-r border-b border-slate-100 bg-slate-50/50';
-                calendarDays.appendChild(emptyDiv);
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day border-r border-b border-slate-100 bg-slate-50/50';
+                calendarDays.appendChild(empty);
             }
 
-            // 填充當月日期
-            for (let day = 1; day <= daysInMonth; day++) {
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                 const dayDiv = document.createElement('div');
-                dayDiv.className = 'calendar-day border-r border-b border-slate-100 p-2 flex flex-col gap-1';
+                dayDiv.className = 'calendar-day border-r border-b border-slate-100 p-2 flex flex-col gap-1 hover:bg-slate-50';
+                dayDiv.innerHTML = `<span class="text-sm font-medium text-slate-500">${d}</span>`;
                 
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                
-                const dayNumber = document.createElement('span');
-                dayNumber.innerText = day;
-                dayNumber.className = 'text-sm font-medium text-slate-500';
-                dayDiv.appendChild(dayNumber);
-
-                // 找尋當日活動
-                const dayEvents = events.filter(e => e.date === dateStr);
-                dayEvents.forEach(event => {
-                    const evTag = document.createElement('div');
-                    evTag.className = `event-tag ${event.color} font-medium`;
-                    evTag.innerText = event.title;
-                    evTag.onclick = (e) => {
-                        e.stopPropagation();
-                        openModal(event);
-                    };
-                    dayDiv.appendChild(evTag);
+                events.filter(e => e.date === dateStr).forEach(event => {
+                    const tag = document.createElement('div');
+                    tag.className = `event-tag ${event.color} font-medium`;
+                    tag.innerText = event.title;
+                    tag.onclick = (e) => { e.stopPropagation(); openModal(event); };
+                    dayDiv.appendChild(tag);
                 });
-
                 calendarDays.appendChild(dayDiv);
             }
         }
@@ -184,34 +100,13 @@
             document.getElementById('modalTime').innerText = event.time;
             document.getElementById('modalDesc').innerText = event.desc;
             document.getElementById('modalLink').href = event.link;
-            
-            const modal = document.getElementById('eventModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            document.getElementById('eventModal').classList.replace('hidden', 'flex');
         }
 
         function closeModal() {
-            const modal = document.getElementById('eventModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            document.getElementById('eventModal').classList.replace('flex', 'hidden');
         }
 
-        document.getElementById('prevBtn').onclick = () => {
-            currentViewDate.setMonth(currentViewDate.getMonth() - 1);
-            renderCalendar();
-        };
-
-        document.getElementById('nextBtn').onclick = () => {
-            currentViewDate.setMonth(currentViewDate.getMonth() + 1);
-            renderCalendar();
-        };
-
-        // 點擊 Modal 外部關閉
-        document.getElementById('eventModal').onclick = (e) => {
-            if (e.target.id === 'eventModal') closeModal();
-        };
-
-        // 初始化
         window.onload = renderCalendar;
     </script>
 </body>
