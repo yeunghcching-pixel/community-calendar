@@ -114,8 +114,8 @@
     </div>
 
     <div class="max-w-4xl mx-auto px-4 mb-4 flex justify-between items-center gap-4">
-        <button onclick="changeMonth(2)" id="btnMar" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary">3月</button>
-        <button onclick="changeMonth(3)" id="btnApr" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary">4月</button>
+        <button onclick="changeMonth(2)" id="btnMar" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary transition-all">3月</button>
+        <button onclick="changeMonth(3)" id="btnApr" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary transition-all">4月</button>
     </div>
 
     <div class="max-w-4xl mx-auto px-4 mb-6 flex flex-wrap justify-center gap-4 text-lg font-black">
@@ -185,10 +185,68 @@
         const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
         const activities = [
-            // 3月 限定活動
-            { date: '2026-03-19', title: '遊戲攤位', time: '4:30 - 6:00 PM', loc: '社區客廳', target: '所有街坊', desc: '在遊戲中學習歷史物理知識，完成後有小禮物喔！', type: 'at-center', reg: 'none' },
-            { date: '2026-03-19', title: '簡樸房查真啲', time: '8:00 - 9:30 PM', loc: '社區客廳', target: '所有街坊', desc: '簡樸房條例已經推出！居於分間單位有什麼要留意？想知多啲記得報名喇！', type: 'at-center', reg: 'link', customLink: 'https://forms.gle/wGqMHZnyirUC8hwX6' },
-            { date: '2026-03-23', title: '智拼油鹽糖工作坊', time: '9:30 - 11:00 AM', loc: '社區客廳', target: '18 歲以上街坊', desc: '齊學識點樣食出好健康 !\n(完成所有挑戰者可獲得食物包一份🤩)\n\n備註：活動會以普通話進行', type: 'at-center', reg: 'whatsapp' },
+            // --- 3月 活動 ---
+            { 
+                date: '2026-03-18', 
+                title: '造盒，儲物', 
+                time: '10:00 - 11:30 AM', 
+                loc: '社區客廳', 
+                target: '所有街坊', 
+                desc: '收納貼士分享，學識將紙袋摺成收納盒。', 
+                type: 'at-center', 
+                reg: 'whatsapp' 
+            },
+            { 
+                date: '2026-03-19', 
+                title: '健康生活—運動與營養', 
+                time: '9:00 - 11:00 AM', 
+                loc: '社區客廳', 
+                target: '所有街坊', 
+                desc: '運動過後需要進行哪些食物補充？感覺肌肉痠痛、體態不正如何調養？', 
+                type: 'at-center', 
+                reg: 'whatsapp' 
+            },
+            { 
+                date: '2026-03-19', 
+                title: '功樂學習攤位', 
+                time: '4:00 - 6:00 PM', 
+                loc: '社區客廳', 
+                target: '小學生', 
+                desc: '功樂中學哥哥姐姐教大家趣味數學/英語！', 
+                type: 'family', 
+                reg: 'whatsapp' 
+            },
+            { 
+                date: '2026-03-19', 
+                title: '遊戲攤位', 
+                time: '4:30 - 6:00 PM', 
+                loc: '社區客廳', 
+                target: '所有街坊', 
+                desc: '在遊戲中學習歷史物理知識，完成後有小禮物喔！', 
+                type: 'at-center', 
+                reg: 'none' 
+            },
+            { 
+                date: '2026-03-19', 
+                title: '簡樸房查真啲', 
+                time: '8:00 - 9:30 PM', 
+                loc: '社區客廳', 
+                target: '所有街坊', 
+                desc: '簡樸房條例已經推出！居於分間單位有什麼要留意？想知多啲記得報名喇！', 
+                type: 'at-center', 
+                reg: 'link', 
+                customLink: 'https://forms.gle/wGqMHZnyirUC8hwX6' 
+            },
+            { 
+                date: '2026-03-23', 
+                title: '智拼油鹽糖工作坊', 
+                time: '9:30 - 11:00 AM', 
+                loc: '社區客廳', 
+                target: '18 歲以上街坊', 
+                desc: '齊學識點樣食出好健康 !\n(完成所有挑戰者可獲得食物包一份🤩)\n\n備註：活動會以普通話進行', 
+                type: 'at-center', 
+                reg: 'whatsapp' 
+            },
             { 
                 date: '2026-03-28', 
                 title: '親子煮食工作坊', 
@@ -210,10 +268,41 @@
                 reg: 'link', 
                 customLink: 'https://forms.gle/rxwNN6qGiztceUGL8' 
             },
-            { date: '2026-03-29', title: '行山團：九逕山', time: '8:30 AM - 3:30 PM', loc: '屯門九逕山', target: '6歲或以上街坊', desc: '欣賞藍地水塘及彩虹欄杆。', type: 'outside', reg: 'link', customLink: 'https://forms.gle/P3MfBsunFMnb7B138' },
+            { 
+                date: '2026-03-29', 
+                title: '行山團：九逕山', 
+                time: '8:30 AM - 3:30 PM', 
+                loc: '屯門九逕山', 
+                target: '6歲或以上街坊', 
+                desc: '欣賞藍地水塘及彩虹欄杆。', 
+                type: 'outside', 
+                reg: 'link', 
+                customLink: 'https://forms.gle/P3MfBsunFMnb7B138' 
+            },
             
-            // 4月 限定活動
-            { date: '2026-04-01', title: '零食挑戰工作坊', time: '10:00 AM - 12:00 NN', loc: '社區客廳', target: '6-12 歲小學生', desc: '專業營養師帶小朋友認識健康零食！', type: 'at-center', reg: 'link', customLink: 'https://forms.gle/d4TwLgP4bjgcxuCs5' },
+            // --- 4月 活動 ---
+            { 
+                date: '2026-04-01', 
+                title: '零食挑戰工作坊', 
+                time: '10:00 AM - 12:00 NN', 
+                loc: '社區客廳', 
+                target: '6-12 歲小學生', 
+                desc: '專業營養師帶小朋友認識健康零食！', 
+                type: 'at-center', 
+                reg: 'link', 
+                customLink: 'https://forms.gle/d4TwLgP4bjgcxuCs5' 
+            },
+            { 
+                date: '2026-04-11', 
+                title: 'M+西九野餐', 
+                time: '3:30 - 7:00 PM', 
+                loc: 'M+文化區', 
+                target: '所有街坊', 
+                desc: '海邊草地大野餐。', 
+                type: 'outside', 
+                reg: 'link', 
+                customLink: 'https://forms.gle/3XQCVsQdPNvvZDW79' 
+            },
             { 
                 date: '2026-04-19', 
                 title: '樂聚一堂：紀念品/小食製作', 
@@ -242,12 +331,11 @@
                 time: '11:30 AM - 2:30 PM', 
                 loc: '天主教聖若翰堂', 
                 target: '4-12歲會員 (聚餐只限活動參加者)', 
-                desc: '「聚首壹塘」聯同天主教聖若翰堂合辦：\n\n活動四：兒童遊戲攤位 (11:30-13:30)\n由青支及聖母軍義工策劃！\n\n活動五：聚餐活動 (13:30-14:30)\n只限參加當天活動一至四的會員。', 
+                desc: '「聚首壹塘」聯同天主教聖若翰堂合辦：\n\n活動四：兒童遊戲攤位 (11:30-13:30)\n由堂區青支及聖母軍義工策劃！\n\n活動五：聚餐活動 (13:30-14:30)\n只限參加當天活動一至四的會員。', 
                 type: 'family', 
                 reg: 'link', 
                 customLink: 'https://forms.gle/EMvNte9GzsT6iSvX7' 
-            },
-            { date: '2026-04-11', title: 'M+西九野餐', time: '3:30 - 7:00 PM', loc: 'M+文化區', target: '所有街坊', desc: '海邊草地大野餐。', type: 'outside', reg: 'link', customLink: 'https://forms.gle/3XQCVsQdPNvvZDW79' }
+            }
         ];
 
         // 恆常活動補充
@@ -256,10 +344,7 @@
             { day: 4, title: '星期四影院', time: '晚上', type: 'regular', desc: '電影放映。' }
         ];
 
-        let currentMonth = 2;
-
         function renderCalendar(monthIdx) {
-            currentMonth = monthIdx;
             const container = document.getElementById('calendarDays');
             container.innerHTML = '';
 
@@ -334,12 +419,12 @@
             if(evt.reg === 'whatsapp') {
                 actionContainer.innerHTML = `
                     <div class="btn-action no-click w-full py-6 bg-[#25d366] text-white text-center text-2xl font-black rounded-[30px]">
-                        留意 WhatsApp 群組消息
+                        請查看 WhatsApp 群組消息
                     </div>
                 `;
             } else if(evt.reg === 'link') {
                 actionContainer.innerHTML = `
-                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-6 bg-[#f19149] text-white text-center text-3xl font-black rounded-[30px]">
+                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-6 bg-[#f19149] text-white text-center text-3xl font-black rounded-[30px] transition-all active:scale-95">
                         按此報名
                     </a>
                 `;
@@ -358,7 +443,12 @@
         function changeMonth(m) { renderCalendar(m); }
         window.onclick = (e) => { if(e.target == document.getElementById('eventModal')) closeModal(); };
         
-        window.onload = () => { renderCalendar(3); }; // 預設顯示 4 月
+        window.onload = () => { 
+            // 根據目前時間自動決定顯示 3 月還是 4 月
+            const currentMonthIdx = today.getMonth();
+            if (currentMonthIdx === 3) renderCalendar(3);
+            else renderCalendar(2);
+        };
     </script>
 </body>
 </html>
