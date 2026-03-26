@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
@@ -57,7 +58,7 @@
         
         @media (max-width: 640px) {
             .day-cell { min-height: 130px; padding: 4px; }
-            .event-label { font-size: 12px !important; padding: 4px 2px !important; }
+            .event-label { font-size: 14px !important; padding: 8px 4px !important; }
             .day-number { font-size: 18px !important; }
         }
 
@@ -70,18 +71,15 @@
 
         .event-label {
             margin-top: 4px;
-            padding: 6px 4px;
-            border-radius: 8px;
+            padding: 8px 6px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 15px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
             cursor: pointer;
-            line-height: 1.2;
+            line-height: 1.3;
             transition: transform 0.1s;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         .event-label:active { transform: scale(0.92); }
 
@@ -114,8 +112,8 @@
     </div>
 
     <div class="max-w-4xl mx-auto px-4 mb-4 flex justify-between items-center gap-4">
-        <button onclick="changeMonth(2)" id="btnMar" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary transition-all">3月</button>
-        <button onclick="changeMonth(3)" id="btnApr" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary transition-all">4月</button>
+        <button onclick="changeMonth(2)" id="btnMar" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary">3月</button>
+        <button onclick="changeMonth(3)" id="btnApr" class="flex-1 py-5 text-2xl font-black rounded-3xl border-4 border-primary">4月</button>
     </div>
 
     <div class="max-w-4xl mx-auto px-4 mb-6 flex flex-wrap justify-center gap-4 text-lg font-black">
@@ -145,32 +143,32 @@
             
             <div class="p-8 md:p-10">
                 <div class="flex justify-between items-start mb-6">
-                    <div class="pr-4">
+                    <div>
                         <span id="modalCategoryLabel" class="text-sm font-black px-3 py-1 rounded-lg bg-slate-100 text-slate-500"></span>
-                        <h2 id="modalTitle" class="text-2xl md:text-3xl font-black mt-3 color-primary leading-tight"></h2>
+                        <h2 id="modalTitle" class="text-3xl md:text-4xl font-black mt-3 color-primary leading-tight"></h2>
                     </div>
-                    <button onclick="closeModal()" class="bg-slate-100 w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center text-4xl text-slate-400 active:bg-slate-200">&times;</button>
+                    <button onclick="closeModal()" class="bg-slate-100 w-14 h-14 rounded-full flex items-center justify-center text-4xl text-slate-400 active:bg-slate-200">&times;</button>
                 </div>
 
                 <div class="space-y-5 overflow-y-auto max-h-[50vh] pr-2">
                     <div class="flex items-center gap-6">
-                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-orange-100 rounded-2xl text-2xl">📅</span>
-                        <div><p class="text-xs text-slate-400 font-black">日期</p><p id="modalDate" class="text-xl font-black text-slate-800"></p></div>
+                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-100 rounded-2xl text-3xl">📅</span>
+                        <div><p class="text-sm text-slate-400 font-black">日期</p><p id="modalDate" class="text-2xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-center gap-6">
-                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-2xl text-2xl">⏰</span>
-                        <div><p class="text-xs text-slate-400 font-black">時間</p><p id="modalTime" class="text-xl font-black text-slate-800"></p></div>
+                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-2xl text-3xl">⏰</span>
+                        <div><p class="text-sm text-slate-400 font-black">時間</p><p id="modalTime" class="text-2xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-center gap-6">
-                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-teal-100 rounded-2xl text-2xl">📍</span>
-                        <div><p class="text-xs text-slate-400 font-black">地點</p><p id="modalLoc" class="text-xl font-black text-slate-800"></p></div>
+                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-teal-100 rounded-2xl text-3xl">📍</span>
+                        <div><p class="text-sm text-slate-400 font-black">地點</p><p id="modalLoc" class="text-2xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-start gap-6">
-                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-purple-100 rounded-2xl text-2xl">👤</span>
-                        <div><p class="text-xs text-slate-400 font-black">對象</p><p id="modalTarget" class="text-lg font-black text-slate-800"></p></div>
+                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-purple-100 rounded-2xl text-3xl">👤</span>
+                        <div><p class="text-sm text-slate-400 font-black">對象</p><p id="modalTarget" class="text-xl font-black text-slate-800"></p></div>
                     </div>
                     <div id="descBox" class="bg-slate-100 p-6 rounded-3xl border-2 border-slate-200">
-                        <p id="modalDesc" class="text-slate-700 text-lg font-medium leading-relaxed whitespace-pre-line"></p>
+                        <p id="modalDesc" class="text-slate-700 text-xl font-medium leading-relaxed whitespace-pre-line"></p>
                     </div>
                 </div>
 
@@ -181,170 +179,93 @@
     </div>
 
     <script>
+        const REG_LINK_GENERAL = "https://forms.gle/3XQCVsQdPNvvZDW79";
+        const SOUP_DESC = "「湯開心霏」煲湯組為大家煲時令靚湯✨";
+
+        // 取得今日日期字串 (YYYY-MM-DD)
         const today = new Date();
         const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
         const activities = [
-            // --- 3月 活動 ---
-            { 
-                date: '2026-03-18', 
-                title: '造盒，儲物', 
-                time: '10:00 - 11:30 AM', 
-                loc: '社區客廳', 
-                target: '所有街坊', 
-                desc: '收納貼士分享，學識將紙袋摺成收納盒。', 
-                type: 'at-center', 
-                reg: 'whatsapp' 
-            },
-            { 
-                date: '2026-03-19', 
-                title: '健康生活—運動與營養', 
-                time: '9:00 - 11:00 AM', 
-                loc: '社區客廳', 
-                target: '所有街坊', 
-                desc: '運動過後需要進行哪些食物補充？感覺肌肉痠痛、體態不正如何調養？', 
-                type: 'at-center', 
-                reg: 'whatsapp' 
-            },
-            { 
-                date: '2026-03-19', 
-                title: '功樂學習攤位', 
-                time: '4:00 - 6:00 PM', 
-                loc: '社區客廳', 
-                target: '小學生', 
-                desc: '功樂中學哥哥姐姐教大家趣味數學/英語！', 
-                type: 'family', 
-                reg: 'whatsapp' 
-            },
-            { 
-                date: '2026-03-19', 
-                title: '遊戲攤位', 
-                time: '4:30 - 6:00 PM', 
-                loc: '社區客廳', 
-                target: '所有街坊', 
-                desc: '在遊戲中學習歷史物理知識，完成後有小禮物喔！', 
-                type: 'at-center', 
-                reg: 'none' 
-            },
-            { 
-                date: '2026-03-19', 
-                title: '簡樸房查真啲', 
-                time: '8:00 - 9:30 PM', 
-                loc: '社區客廳', 
-                target: '所有街坊', 
-                desc: '簡樸房條例已經推出！居於分間單位有什麼要留意？想知多啲記得報名喇！', 
-                type: 'at-center', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/wGqMHZnyirUC8hwX6' 
-            },
-            { 
-                date: '2026-03-23', 
-                title: '智拼油鹽糖工作坊', 
-                time: '9:30 - 11:00 AM', 
-                loc: '社區客廳', 
-                target: '18 歲以上街坊', 
-                desc: '齊學識點樣食出好健康 !\n(完成所有挑戰者可獲得食物包一份🤩)\n\n備註：活動會以普通話進行', 
-                type: 'at-center', 
-                reg: 'whatsapp' 
-            },
+            // 3月 限定活動
+            { date: '2026-03-19', title: '遊戲攤位', time: '4:30 - 6:00 PM', loc: '社區客廳', target: '所有街坊', desc: '在遊戲中學習歷史物理知識，完成後有小禮物喔！', type: 'at-center', reg: 'none' },
+            { date: '2026-03-19', title: '簡樸房查真啲', time: '8:00 - 9:30 PM', loc: '社區客廳', target: '所有街坊', desc: '簡樸房條例已經推出！居於分間單位有什麼要留意？想知多啲記得報名喇！', type: 'at-center', reg: 'link', customLink: 'https://forms.gle/wGqMHZnyirUC8hwX6' },
+            { date: '2026-03-23', title: '「智拼油鹽糖 · 三高知識進生活」工作坊', time: '9:30 - 11:00 AM', loc: '社區客廳', target: '18 歲以上街坊', desc: '您將與其他參加者組隊，透過判斷題遊戲挑戰，贏取知識拼圖從「油、鹽、糖」三種生活常見調味品入手 - 齊學識點樣食出好健康 !\n(完成所有挑戰者可獲得食物包一份🤩)\n\n備註：活動會以普通話進行', type: 'at-center', reg: 'whatsapp' },
+            { date: '2026-03-25', title: '選科分享', time: '4:00 - 6:30 PM', loc: '客廳', target: '高小-初中生', desc: '中大學生分享選科心得！', type: 'at-center', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-03-27', title: '一齊煲湯', time: '3:15 - 5:30 PM', loc: '客廳', target: '所有街坊', desc: '分享時令靚湯同麻糬！', type: 'at-center', reg: 'link', customLink: REG_LINK_GENERAL },
             { 
                 date: '2026-03-28', 
-                title: '親子煮食工作坊', 
-                time: '3:00 - 4:30 PM', 
-                loc: '社區客廳', 
-                target: '3至8歲會員及一位家長', 
-                desc: '食出好心情 - 親子互動煮食工作坊\n⭐ 當「情緒」遇上「營養素」\n⭐ 共煮一鍋「好時光」\n⭐ 組合自己的「好心情餐盤」\n\n名額：3個家庭 (額滿即止)\n備註：活動會以普通話進行', 
-                type: 'family', 
-                reg: 'whatsapp' 
-            },
-            { 
-                date: '2026-03-28', 
-                title: '大人生日會', 
+                title: '1-3月大人生日會', 
                 time: '5:00 - 7:30 PM', 
                 loc: '社區客廳', 
                 target: '18歲以上街坊，1-3月生日優先', 
-                desc: '1-3月大人生日會😆😆🎂🎂\n一齊玩遊戲🏁、唱K🎤、食嘢😋、切蛋糕🎂、抽獎🗳️！', 
+                desc: '今次同1-3月生日嘅大人們慶祝😚😚🎉🎉✨✨\n一齊係社區客廳玩遊戲🏁、唱K🎤、食嘢😋、切蛋糕🎂、抽獎🗳️！\n\n如有查詢，歡迎聯絡楊姑娘 96671816', 
                 type: 'at-center', 
                 reg: 'link', 
                 customLink: 'https://forms.gle/rxwNN6qGiztceUGL8' 
             },
-            { 
-                date: '2026-03-29', 
-                title: '行山團：九逕山', 
-                time: '8:30 AM - 3:30 PM', 
-                loc: '屯門九逕山', 
-                target: '6歲或以上街坊', 
-                desc: '欣賞藍地水塘及彩虹欄杆。', 
-                type: 'outside', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/P3MfBsunFMnb7B138' 
-            },
+            { date: '2026-03-28', title: '中大一日遊', time: '10:15 AM - 3:45 PM', loc: '中大校園', target: '小四至初中生及其家庭', desc: '參觀大學校園環境。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-03-29', title: '行山團：九逕山', time: '8:30 AM - 3:30 PM', loc: '屯門九逕山', target: '6歲或以上街坊', desc: '路線：屯門九逕山一帶，途經藍地水塘及彩虹欄杆，拍照打卡一流！\n\n注意事項：\n1. 上午 8:30 於社區客廳集合及出發。\n2. 需自備充足食水、防曬用品及穿著合適運動服。', type: 'outside', reg: 'link', customLink: 'https://forms.gle/P3MfBsunFMnb7B138' },
             
-            // --- 4月 活動 ---
-            { 
-                date: '2026-04-01', 
-                title: '零食挑戰工作坊', 
-                time: '10:00 AM - 12:00 NN', 
-                loc: '社區客廳', 
-                target: '6-12 歲小學生', 
-                desc: '專業營養師帶小朋友認識健康零食！', 
-                type: 'at-center', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/d4TwLgP4bjgcxuCs5' 
-            },
-            { 
-                date: '2026-04-11', 
-                title: 'M+西九野餐', 
-                time: '3:30 - 7:00 PM', 
-                loc: 'M+文化區', 
-                target: '所有街坊', 
-                desc: '海邊草地大野餐。', 
-                type: 'outside', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/3XQCVsQdPNvvZDW79' 
-            },
-            { 
-                date: '2026-04-19', 
-                title: '樂聚一堂：紀念品/小食製作', 
-                time: '11:30 AM - 1:30 PM', 
-                loc: '聚首壹塘社區客廳', 
-                target: '13歲以上會員', 
-                desc: '「聚首壹塘」聯同天主教聖若翰堂合辦：\n\n活動一：製作聚餐紀念品 (名額8名)\n活動二：製作聚餐小食 (名額8名)\n\n歡渡週末，一齊動手做！', 
-                type: 'at-center', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/EMvNte9GzsT6iSvX7' 
-            },
-            { 
-                date: '2026-04-19', 
-                title: '惜物共享派對', 
-                time: '10:30 AM - 1:30 PM', 
-                loc: '聚首壹塘社區客廳', 
-                target: '聚首壹塘會員', 
-                desc: '「聚首壹塘」聯同天主教聖若翰堂合辦活動三：\n惜物共享派對，資源互助，歡度週日。', 
-                type: 'at-center', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/EMvNte9GzsT6iSvX7' 
-            },
-            { 
-                date: '2026-04-19', 
-                title: '兒童遊戲攤位及聚餐', 
-                time: '11:30 AM - 2:30 PM', 
-                loc: '天主教聖若翰堂', 
-                target: '4-12歲會員 (聚餐只限活動參加者)', 
-                desc: '「聚首壹塘」聯同天主教聖若翰堂合辦：\n\n活動四：兒童遊戲攤位 (11:30-13:30)\n由堂區青支及聖母軍義工策劃！\n\n活動五：聚餐活動 (13:30-14:30)\n只限參加當天活動一至四的會員。', 
-                type: 'family', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/EMvNte9GzsT6iSvX7' 
-            }
+            // 4月 限定活動
+            { date: '2026-04-01', title: '零食挑戰工作坊', time: '10:00 AM - 12:00 NN', loc: '社區客廳', target: '6-12 歲小學生', desc: '專業營養師用遊戲方式帶小朋友認識健康零食！', type: 'at-center', reg: 'link', customLink: 'https://forms.gle/d4TwLgP4bjgcxuCs5' },
+            { date: '2026-04-01', title: '貓Cafe！', time: '3:00 - 5:30 PM', loc: '觀塘', target: '所有街坊', desc: '放鬆心情，同貓貓玩。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-01', title: '學習支援', time: '4:00 - 7:00 PM', loc: '客廳', target: '高小-高中生', desc: '功課遇難題？姐姐哥哥幫你！', type: 'at-center', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-01', title: '行沈雲山', time: '3:15 - 5:15 PM', loc: '沈雲山', target: '所有街坊', desc: '欣賞觀塘美景。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-08', title: '行山食糖水', time: '2:30 - 6:30 PM', loc: '顯徑', target: '所有街坊', desc: '遠足運動兼食糖水。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-08', title: '親子一齊玩(1)', time: '5:00 - 7:00 PM', loc: '客廳', target: '親子/祖孫', desc: '建立親密關係。', type: 'family', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-09', title: '親子一齊玩(2)', time: '5:00 - 7:00 PM', loc: '客廳', target: '親子/祖孫', desc: '建立親密關係。', type: 'family', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-10', title: '親子一齊玩(3)', time: '5:00 - 7:00 PM', loc: '客廳', target: '親子/祖孫', desc: '建立親密關係。', type: 'family', reg: 'link', customLink: REG_LINK_GENERAL },
+            { date: '2026-04-11', title: 'M+西九野餐', time: '3:30 - 7:00 PM', loc: 'M+文化區', target: '所有街坊', desc: '海邊草地大野餐。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
+
+            // 恆常活動
+            { date: '2026-03-27', title: '月會', time: '8:00 - 9:30 PM', loc: '客廳', target: '所有會員', desc: '介紹下月活動，一齊討論客廳運作。小朋友可以睇卡通！', type: 'regular', reg: 'whatsapp' },
+            { date: '2026-03-24', title: '飲湯啦😜', time: '4:30 PM 後', loc: '客廳', target: '所有會員', desc: SOUP_DESC, type: 'regular', reg: 'none' },
+            { date: '2026-04-14', title: '飲湯啦😜', time: '4:30 PM 後', loc: '客廳', target: '所有會員', desc: SOUP_DESC, type: 'regular', reg: 'none' },
+            { date: '2026-04-28', title: '飲湯啦😜', time: '4:30 PM 後', loc: '客廳', target: '所有會員', desc: SOUP_DESC, type: 'regular', reg: 'none' }
         ];
 
-        // 恆常活動補充
-        const regularEvts = [
-            { day: 5, title: '健身研習社', time: '9:00 - 10:30 AM', type: 'regular', desc: '肌肉鍛鍊。' },
-            { day: 4, title: '星期四影院', time: '晚上', type: 'regular', desc: '電影放映。' }
-        ];
+        // 循環生成逢星期四的影院和逢星期五的健身研習社 (恆常)
+        for(let m=2; m<=3; m++) { 
+            const daysInMonth = new Date(2026, m + 1, 0).getDate();
+            for(let d=1; d<=daysInMonth; d++) {
+                const date = new Date(2026, m, d);
+                const dateStr = `2026-0${m+1}-${String(d).padStart(2,'0')}`;
+                
+                if(date.getDay() === 4) {
+                    activities.push({
+                        date: dateStr,
+                        title: '星期四影院',
+                        time: '晚上',
+                        loc: '客廳',
+                        target: '所有會員',
+                        desc: '', 
+                        type: 'regular',
+                        reg: 'none'
+                    });
+                }
+                
+                if(date.getDay() === 5) {
+                    activities.push({
+                        date: dateStr,
+                        title: '健身研習社',
+                        time: '9:00 - 10:30 AM',
+                        loc: '社區客廳',
+                        target: '18 歲以上街坊',
+                        desc: '由健身教練帶領，一齊進行肌肉鍛鍊。',
+                        type: 'regular',
+                        reg: 'link',
+                        customLink: 'https://wa.me/85297208622?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E5%8F%83%E5%8A%A0%E5%81%A5%E8%BA%AB%E7%A0%94%E7%BF%92%E7%A4%BE',
+                        regText: 'WhatsApp 查詢'
+                    });
+                }
+            }
+        }
+
+        let currentMonth = 2;
 
         function renderCalendar(monthIdx) {
+            currentMonth = monthIdx;
             const container = document.getElementById('calendarDays');
             container.innerHTML = '';
 
@@ -362,8 +283,9 @@
 
             for(let d=1; d<=daysInMonth; d++) {
                 const dateStr = `2026-0${monthIdx + 1}-${String(d).padStart(2, '0')}`;
-                const date = new Date(2026, monthIdx, d);
                 const cell = document.createElement('div');
+                
+                // 判斷是否為今日
                 const isToday = (dateStr === todayStr);
                 cell.className = `day-cell ${isToday ? 'today-cell' : ''}`;
                 
@@ -374,7 +296,6 @@
                     </div>
                 `;
                 
-                // 顯示限定活動
                 const dayEvts = activities.filter(a => a.date === dateStr);
                 dayEvts.forEach(evt => {
                     const label = document.createElement('div');
@@ -383,18 +304,6 @@
                     label.onclick = (e) => { e.stopPropagation(); openModal(evt); };
                     cell.appendChild(label);
                 });
-
-                // 顯示恆常活動
-                regularEvts.forEach(reg => {
-                    if(date.getDay() === reg.day) {
-                        const label = document.createElement('div');
-                        label.className = `event-label bg-${reg.type}`;
-                        label.innerText = reg.title;
-                        label.onclick = (e) => { e.stopPropagation(); openModal({...reg, date: dateStr, loc: '社區客廳', target: '會員'}); };
-                        cell.appendChild(label);
-                    }
-                });
-
                 container.appendChild(cell);
             }
         }
@@ -403,9 +312,16 @@
             document.getElementById('modalTitle').innerText = evt.title;
             document.getElementById('modalDate').innerText = evt.date;
             document.getElementById('modalTime').innerText = evt.time;
-            document.getElementById('modalLoc').innerText = evt.loc || '社區客廳';
+            document.getElementById('modalLoc').innerText = evt.loc;
             document.getElementById('modalTarget').innerText = evt.target;
-            document.getElementById('modalDesc').innerText = evt.desc;
+            
+            const descBox = document.getElementById('descBox');
+            if(evt.desc && evt.desc.trim() !== "") {
+                descBox.style.display = 'block';
+                document.getElementById('modalDesc').innerText = evt.desc;
+            } else {
+                descBox.style.display = 'none';
+            }
             
             const header = document.getElementById('modalHeaderColor');
             const catLabel = document.getElementById('modalCategoryLabel');
@@ -416,23 +332,25 @@
             catLabel.innerText = typeNames[evt.type];
 
             actionContainer.innerHTML = '';
-            if(evt.reg === 'whatsapp') {
+            if(evt.reg === 'none') {
                 actionContainer.innerHTML = `
-                    <div class="btn-action no-click w-full py-6 bg-[#25d366] text-white text-center text-2xl font-black rounded-[30px]">
-                        請查看 WhatsApp 群組消息
+                    <div class="btn-action no-click w-full py-6 bg-slate-400 text-white text-center text-3xl font-black rounded-[30px]">
+                        不用報名，即時參加
                     </div>
                 `;
-            } else if(evt.reg === 'link') {
+            } else if(evt.reg === 'whatsapp') {
                 actionContainer.innerHTML = `
-                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-6 bg-[#f19149] text-white text-center text-3xl font-black rounded-[30px] transition-all active:scale-95">
-                        按此報名
-                    </a>
+                    <div class="btn-action no-click w-full py-6 bg-[#25d366] text-white text-center text-3xl font-black rounded-[30px]">
+                        請查看 WhatsApp 訊息
+                    </div>
                 `;
             } else {
+                const btnLabel = evt.regText || '按此報名';
+                const btnColor = btnLabel.includes('WhatsApp') ? 'bg-[#25d366]' : 'bg-[#f19149]';
                 actionContainer.innerHTML = `
-                    <div class="btn-action no-click w-full py-6 bg-slate-400 text-white text-center text-2xl font-black rounded-[30px]">
-                        現場即時參加
-                    </div>
+                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-6 ${btnColor} text-white text-center text-3xl font-black rounded-[30px] transition-all active:scale-95">
+                        ${btnLabel}
+                    </a>
                 `;
             }
 
@@ -443,11 +361,14 @@
         function changeMonth(m) { renderCalendar(m); }
         window.onclick = (e) => { if(e.target == document.getElementById('eventModal')) closeModal(); };
         
-        window.onload = () => { 
-            // 根據目前時間自動決定顯示 3 月還是 4 月
-            const currentMonthIdx = today.getMonth();
-            if (currentMonthIdx === 3) renderCalendar(3);
-            else renderCalendar(2);
+        window.onload = () => {
+            // 初始化時根據當前月份自動切換（如果是 4 月則顯示 4 月）
+            const currentMonthIdx = today.getMonth(); // 0-11
+            if (currentMonthIdx === 3) {
+                renderCalendar(3);
+            } else {
+                renderCalendar(2);
+            }
         };
     </script>
 </body>
