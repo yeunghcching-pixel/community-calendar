@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
@@ -57,9 +56,9 @@
         }
         
         @media (max-width: 640px) {
-            .day-cell { min-height: 130px; padding: 4px; }
-            .event-label { font-size: 14px !important; padding: 8px 4px !important; }
-            .day-number { font-size: 18px !important; }
+            .day-cell { min-height: 120px; padding: 3px; }
+            .event-label { font-size: 12px !important; padding: 4px 2px !important; margin-top: 2px !important; }
+            .day-number { font-size: 16px !important; }
         }
 
         .day-number {
@@ -71,17 +70,20 @@
 
         .event-label {
             margin-top: 4px;
-            padding: 8px 6px;
-            border-radius: 10px;
+            padding: 5px 4px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 13px;
             text-align: center;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             cursor: pointer;
-            line-height: 1.3;
+            line-height: 1.2;
             transition: transform 0.1s;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
-        .event-label:active { transform: scale(0.92); }
+        .event-label:active { transform: scale(0.95); }
 
         .btn-action {
             box-shadow: 0 6px 0 rgba(0,0,0,0.2);
@@ -143,32 +145,32 @@
             
             <div class="p-8 md:p-10">
                 <div class="flex justify-between items-start mb-6">
-                    <div>
+                    <div class="pr-4">
                         <span id="modalCategoryLabel" class="text-sm font-black px-3 py-1 rounded-lg bg-slate-100 text-slate-500"></span>
-                        <h2 id="modalTitle" class="text-3xl md:text-4xl font-black mt-3 color-primary leading-tight"></h2>
+                        <h2 id="modalTitle" class="text-2xl md:text-3xl font-black mt-3 color-primary leading-tight"></h2>
                     </div>
-                    <button onclick="closeModal()" class="bg-slate-100 w-14 h-14 rounded-full flex items-center justify-center text-4xl text-slate-400 active:bg-slate-200">&times;</button>
+                    <button onclick="closeModal()" class="bg-slate-100 w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center text-3xl text-slate-400 active:bg-slate-200">&times;</button>
                 </div>
 
-                <div class="space-y-5 overflow-y-auto max-h-[50vh] pr-2">
+                <div class="space-y-5 overflow-y-auto max-h-[55vh] pr-2">
                     <div class="flex items-center gap-6">
-                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-orange-100 rounded-2xl text-3xl">📅</span>
-                        <div><p class="text-sm text-slate-400 font-black">日期</p><p id="modalDate" class="text-2xl font-black text-slate-800"></p></div>
+                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-orange-100 rounded-2xl text-2xl">📅</span>
+                        <div><p class="text-xs text-slate-400 font-black">日期</p><p id="modalDate" class="text-xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-center gap-6">
-                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-2xl text-3xl">⏰</span>
-                        <div><p class="text-sm text-slate-400 font-black">時間</p><p id="modalTime" class="text-2xl font-black text-slate-800"></p></div>
+                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-blue-100 rounded-2xl text-2xl">⏰</span>
+                        <div><p class="text-xs text-slate-400 font-black">時間</p><p id="modalTime" class="text-xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-center gap-6">
-                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-teal-100 rounded-2xl text-3xl">📍</span>
-                        <div><p class="text-sm text-slate-400 font-black">地點</p><p id="modalLoc" class="text-2xl font-black text-slate-800"></p></div>
+                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-teal-100 rounded-2xl text-2xl">📍</span>
+                        <div><p class="text-xs text-slate-400 font-black">地點</p><p id="modalLoc" class="text-xl font-black text-slate-800"></p></div>
                     </div>
                     <div class="flex items-start gap-6">
-                        <span class="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-purple-100 rounded-2xl text-3xl">👤</span>
-                        <div><p class="text-sm text-slate-400 font-black">對象</p><p id="modalTarget" class="text-xl font-black text-slate-800"></p></div>
+                        <span class="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-purple-100 rounded-2xl text-2xl">👤</span>
+                        <div><p class="text-xs text-slate-400 font-black">對象</p><p id="modalTarget" class="text-lg font-black text-slate-800"></p></div>
                     </div>
                     <div id="descBox" class="bg-slate-100 p-6 rounded-3xl border-2 border-slate-200">
-                        <p id="modalDesc" class="text-slate-700 text-xl font-medium leading-relaxed whitespace-pre-line"></p>
+                        <p id="modalDesc" class="text-slate-700 text-lg font-medium leading-relaxed whitespace-pre-line"></p>
                     </div>
                 </div>
 
@@ -180,9 +182,9 @@
 
     <script>
         const REG_LINK_GENERAL = "https://forms.gle/3XQCVsQdPNvvZDW79";
+        const REG_LINK_APR19 = "https://forms.gle/eh6ULHoDEcpQ4GVF6";
         const SOUP_DESC = "「湯開心霏」煲湯組為大家煲時令靚湯✨";
 
-        // 取得今日日期字串 (YYYY-MM-DD)
         const today = new Date();
         const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
@@ -193,17 +195,7 @@
             { date: '2026-03-23', title: '「智拼油鹽糖 · 三高知識進生活」工作坊', time: '9:30 - 11:00 AM', loc: '社區客廳', target: '18 歲以上街坊', desc: '您將與其他參加者組隊，透過判斷題遊戲挑戰，贏取知識拼圖從「油、鹽、糖」三種生活常見調味品入手 - 齊學識點樣食出好健康 !\n(完成所有挑戰者可獲得食物包一份🤩)\n\n備註：活動會以普通話進行', type: 'at-center', reg: 'whatsapp' },
             { date: '2026-03-25', title: '選科分享', time: '4:00 - 6:30 PM', loc: '客廳', target: '高小-初中生', desc: '中大學生分享選科心得！', type: 'at-center', reg: 'link', customLink: REG_LINK_GENERAL },
             { date: '2026-03-27', title: '一齊煲湯', time: '3:15 - 5:30 PM', loc: '客廳', target: '所有街坊', desc: '分享時令靚湯同麻糬！', type: 'at-center', reg: 'link', customLink: REG_LINK_GENERAL },
-            { 
-                date: '2026-03-28', 
-                title: '1-3月大人生日會', 
-                time: '5:00 - 7:30 PM', 
-                loc: '社區客廳', 
-                target: '18歲以上街坊，1-3月生日優先', 
-                desc: '今次同1-3月生日嘅大人們慶祝😚😚🎉🎉✨✨\n一齊係社區客廳玩遊戲🏁、唱K🎤、食嘢😋、切蛋糕🎂、抽獎🗳️！\n\n如有查詢，歡迎聯絡楊姑娘 96671816', 
-                type: 'at-center', 
-                reg: 'link', 
-                customLink: 'https://forms.gle/rxwNN6qGiztceUGL8' 
-            },
+            { date: '2026-03-28', title: '1-3月大人生日會', time: '5:00 - 7:30 PM', loc: '社區客廳', target: '18歲以上街坊，1-3月生日優先', desc: '今次同1-3月生日嘅大人們慶祝😚😚🎉🎉✨✨\n一齊係社區客廳玩遊戲🏁、唱K🎤、食嘢😋、切蛋糕🎂、抽獎🗳️！\n\n如有查詢，歡迎聯絡楊姑娘 96671816', type: 'at-center', reg: 'link', customLink: 'https://forms.gle/rxwNN6qGiztceUGL8' },
             { date: '2026-03-28', title: '中大一日遊', time: '10:15 AM - 3:45 PM', loc: '中大校園', target: '小四至初中生及其家庭', desc: '參觀大學校園環境。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
             { date: '2026-03-29', title: '行山團：九逕山', time: '8:30 AM - 3:30 PM', loc: '屯門九逕山', target: '6歲或以上街坊', desc: '路線：屯門九逕山一帶，途經藍地水塘及彩虹欄杆，拍照打卡一流！\n\n注意事項：\n1. 上午 8:30 於社區客廳集合及出發。\n2. 需自備充足食水、防曬用品及穿著合適運動服。', type: 'outside', reg: 'link', customLink: 'https://forms.gle/P3MfBsunFMnb7B138' },
             
@@ -218,6 +210,68 @@
             { date: '2026-04-10', title: '親子一齊玩(3)', time: '5:00 - 7:00 PM', loc: '客廳', target: '親子/祖孫', desc: '建立親密關係。', type: 'family', reg: 'link', customLink: REG_LINK_GENERAL },
             { date: '2026-04-11', title: 'M+西九野餐', time: '3:30 - 7:00 PM', loc: 'M+文化區', target: '所有街坊', desc: '海邊草地大野餐。', type: 'outside', reg: 'link', customLink: REG_LINK_GENERAL },
 
+            // 4月19日「樂聚一堂」合辦活動系列 - 全部 5 個活動
+            { 
+                date: '2026-04-19', 
+                title: '樂聚一堂：製作紀念品', 
+                shortTitle: '(1) 製作紀念品',
+                time: '11:30 AM - 1:30 PM', 
+                loc: '社區客廳', 
+                target: '13 歲以上會員 (名額 8 名)', 
+                desc: '「樂聚一堂」：聯同天主教聖若翰堂合辦活動。\n教友與街坊製作聚餐紀念品。\n\n⚠️ 備註：活動一(紀念品組)及活動二(小食組)只限選其一。參加者將隨後參加下午 1:30 的聚餐活動。', 
+                type: 'at-center', 
+                reg: 'link', 
+                customLink: REG_LINK_APR19 
+            },
+            { 
+                date: '2026-04-19', 
+                title: '樂聚一堂：製作小食', 
+                shortTitle: '(2) 製作小食',
+                time: '11:30 AM - 1:30 PM', 
+                loc: '社區客廳', 
+                target: '13 歲以上會員 (名額 8 名)', 
+                desc: '「樂聚一堂」：聯同天主教聖若翰堂合辦活動。\n教友與街坊製作聚餐小食。\n\n⚠️ 備註：活動一(紀念品組)及活動二(小食組)只限選其一。參加者將隨後參加下午 1:30 的聚餐活動。', 
+                type: 'at-center', 
+                reg: 'link', 
+                customLink: REG_LINK_APR19 
+            },
+            { 
+                date: '2026-04-19', 
+                title: '樂聚一堂：惜物共享', 
+                shortTitle: '(3) 惜物共享',
+                time: '10:30 AM - 1:30 PM', 
+                loc: '社區客廳', 
+                target: '社區客廳會員', 
+                desc: '「樂聚一堂」：聯同天主教聖若翰堂合辦活動。\n與街坊教友一齊惜物共享派對！', 
+                type: 'at-center', 
+                reg: 'link', 
+                customLink: REG_LINK_APR19 
+            },
+            { 
+                date: '2026-04-19', 
+                title: '樂聚一堂：兒童遊戲', 
+                shortTitle: '(4) 兒童遊戲攤位',
+                time: '11:30 AM - 1:30 PM', 
+                loc: '天主教聖若翰堂', 
+                target: '4-12 歲會員', 
+                desc: '「樂聚一堂」：聯同天主教聖若翰堂合辦活動。\n由堂區青年及聖母軍義工策劃，趣味十足！\n\n⚠️ 注意：此活動地點位於「天主教聖若翰堂」。', 
+                type: 'outside', 
+                reg: 'link', 
+                customLink: REG_LINK_APR19 
+            },
+            { 
+                date: '2026-04-19', 
+                title: '樂聚一堂：聚餐活動', 
+                shortTitle: '(5) 聚餐活動',
+                time: '1:30 PM - 2:30 PM', 
+                loc: '天主教聖若翰堂', 
+                target: '只限參加活動一至四之會員', 
+                desc: '「樂聚一堂」：聯同天主教聖若翰堂合辦活動。\n在製作與遊戲後，大家一齊共進午餐歡渡週末！', 
+                type: 'outside', 
+                reg: 'link', 
+                customLink: REG_LINK_APR19 
+            },
+
             // 恆常活動
             { date: '2026-03-27', title: '月會', time: '8:00 - 9:30 PM', loc: '客廳', target: '所有會員', desc: '介紹下月活動，一齊討論客廳運作。小朋友可以睇卡通！', type: 'regular', reg: 'whatsapp' },
             { date: '2026-03-24', title: '飲湯啦😜', time: '4:30 PM 後', loc: '客廳', target: '所有會員', desc: SOUP_DESC, type: 'regular', reg: 'none' },
@@ -225,7 +279,7 @@
             { date: '2026-04-28', title: '飲湯啦😜', time: '4:30 PM 後', loc: '客廳', target: '所有會員', desc: SOUP_DESC, type: 'regular', reg: 'none' }
         ];
 
-        // 循環生成逢星期四的影院和逢星期五的健身研習社 (恆常)
+        // 循環生成恆常活動
         for(let m=2; m<=3; m++) { 
             const daysInMonth = new Date(2026, m + 1, 0).getDate();
             for(let d=1; d<=daysInMonth; d++) {
@@ -284,8 +338,6 @@
             for(let d=1; d<=daysInMonth; d++) {
                 const dateStr = `2026-0${monthIdx + 1}-${String(d).padStart(2, '0')}`;
                 const cell = document.createElement('div');
-                
-                // 判斷是否為今日
                 const isToday = (dateStr === todayStr);
                 cell.className = `day-cell ${isToday ? 'today-cell' : ''}`;
                 
@@ -300,7 +352,7 @@
                 dayEvts.forEach(evt => {
                     const label = document.createElement('div');
                     label.className = `event-label bg-${evt.type}`;
-                    label.innerText = evt.title;
+                    label.innerText = evt.shortTitle || evt.title;
                     label.onclick = (e) => { e.stopPropagation(); openModal(evt); };
                     cell.appendChild(label);
                 });
@@ -334,13 +386,13 @@
             actionContainer.innerHTML = '';
             if(evt.reg === 'none') {
                 actionContainer.innerHTML = `
-                    <div class="btn-action no-click w-full py-6 bg-slate-400 text-white text-center text-3xl font-black rounded-[30px]">
+                    <div class="btn-action no-click w-full py-5 bg-slate-400 text-white text-center text-2xl font-black rounded-[25px]">
                         不用報名，即時參加
                     </div>
                 `;
             } else if(evt.reg === 'whatsapp') {
                 actionContainer.innerHTML = `
-                    <div class="btn-action no-click w-full py-6 bg-[#25d366] text-white text-center text-3xl font-black rounded-[30px]">
+                    <div class="btn-action no-click w-full py-5 bg-[#25d366] text-white text-center text-2xl font-black rounded-[25px]">
                         請查看 WhatsApp 訊息
                     </div>
                 `;
@@ -348,7 +400,7 @@
                 const btnLabel = evt.regText || '按此報名';
                 const btnColor = btnLabel.includes('WhatsApp') ? 'bg-[#25d366]' : 'bg-[#f19149]';
                 actionContainer.innerHTML = `
-                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-6 ${btnColor} text-white text-center text-3xl font-black rounded-[30px] transition-all active:scale-95">
+                    <a href="${evt.customLink}" target="_blank" class="btn-action block w-full py-5 ${btnColor} text-white text-center text-2xl font-black rounded-[25px] transition-all active:scale-95">
                         ${btnLabel}
                     </a>
                 `;
@@ -362,13 +414,9 @@
         window.onclick = (e) => { if(e.target == document.getElementById('eventModal')) closeModal(); };
         
         window.onload = () => {
-            // 初始化時根據當前月份自動切換（如果是 4 月則顯示 4 月）
-            const currentMonthIdx = today.getMonth(); // 0-11
-            if (currentMonthIdx === 3) {
-                renderCalendar(3);
-            } else {
-                renderCalendar(2);
-            }
+            const currentMonthIdx = today.getMonth();
+            if (currentMonthIdx === 3) { renderCalendar(3); } 
+            else { renderCalendar(2); }
         };
     </script>
 </body>
